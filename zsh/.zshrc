@@ -2,47 +2,42 @@
 # Oh My Zsh Setup
 # ===========================
 export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="robbyrussell"
-
+ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
-  git 
-  zsh-autosuggestions 
+  git
+  zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+# ==========================
+# History
+# ==========================
+HISTSIZE=5000
+SAVEHIST=5000
+HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
 
-# ==========================
-# Starship prompt
-# ==========================
-eval "$(starship init zsh)"
+source $ZSH/oh-my-zsh.sh
 
 # ==========================
 # zoxide (smart cd)
 # ==========================
 eval "$(zoxide init zsh)"
 
-# Better history
-HISTSIZE=5000
-SAVEHIST=5000
-HISTFILE=~/.zsh_history
-
-setopt HIST_IGNORE_ALL_DUPS
-setopt SHARE_HISTORY
-
-# ====================
+# ==========================
 # Aliases
-# ====================
+# ==========================
 alias ls="eza --icons"
-alias ll="ls -la"
+alias ll="eza --icons -la"
 alias gs="git status"
 alias ga="git add ."
-alias gc="git  commit"
+alias gc="git commit"
 alias gp="git push"
 alias cat="batcat"
 alias lg="lazygit"
 alias v="nvim"
+
 # ==========================
 # NVM (Node Version Manager)
 # ==========================
@@ -54,6 +49,7 @@ export NVM_DIR="$HOME/.nvm"
 # Path Updates
 # =========================
 export PATH="/snap/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # ========================
 # neofetch
@@ -61,15 +57,13 @@ export PATH="/snap/bin:$PATH"
 command -v neofetch >/dev/null && neofetch
 
 # =======================
-# tmux auto-start (fixed)
+# tmux auto-start
 # =======================
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   tmux attach-session -t default 2>/dev/null || tmux new-session -s default
 fi
 
 # =========================
+# Powerlevel10k
 # =========================
-if [ -f ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
