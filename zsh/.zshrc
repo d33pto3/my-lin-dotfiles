@@ -37,6 +37,7 @@ alias gp="git push"
 alias cat="batcat"
 alias lg="lazygit"
 alias v="nvim"
+alias htop="btop"
 
 # ==========================
 # NVM (Node Version Manager)
