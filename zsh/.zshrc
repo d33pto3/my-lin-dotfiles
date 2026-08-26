@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 # ==========================
 # zoxide (smart cd)
 # ==========================
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init zsh)"
 
 # ==========================
@@ -45,6 +46,7 @@ alias htop="btop"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm use default --silent
 
 # =========================
 # Path Updates
@@ -53,9 +55,9 @@ export PATH="/snap/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # ========================
-# neofetch
+# fastfetch
 # ========================
-command -v neofetch >/dev/null && neofetch
+command -v fastfetch >/dev/null && fastfetch
 
 # =======================
 # tmux auto-start
@@ -68,3 +70,5 @@ fi
 # Powerlevel10k
 # =========================
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
