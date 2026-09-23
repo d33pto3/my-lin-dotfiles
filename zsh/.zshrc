@@ -39,6 +39,9 @@ alias cat="batcat"
 alias lg="lazygit"
 alias v="nvim"
 alias htop="btop"
+alias devstart="zsh ~/scripts/dev-start.zsh"
+alias devstop="zsh ~/scripts/dev-stop.zsh"
+alias nxtfrontlint="zsh ~/scripts/front-lint.zsh"
 
 # ==========================
 # NVM (Node Version Manager)
@@ -70,5 +73,7 @@ fi
 # Powerlevel10k
 # =========================
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
